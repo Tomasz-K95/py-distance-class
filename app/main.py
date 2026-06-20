@@ -2,7 +2,7 @@ from __future__ import annotations
 
 
 class Distance:
-    def __init__(self, km: int) -> Distance:
+    def __init__(self, km: int) -> None:
         self.km = km
 
     def __str__(self) -> str:
@@ -17,7 +17,7 @@ class Distance:
         if isinstance(other, Distance):
             return Distance(self.km + other.km)
 
-    def __iadd__(self, other: int | float | Distance) -> int:
+    def __iadd__(self, other: int | float | Distance) ->Distance:
         if isinstance(other, (int, float)):
             self.km += other
             return self
@@ -25,12 +25,12 @@ class Distance:
             self.km += other.km
         return self
 
-    def __mul__(self, other: int | float | Distance) -> Distance:
+    def __mul__(self, other: int | float) -> Distance:
         if isinstance(other, (int, float)):
             distance2 = self.km * other
             return Distance(distance2)
 
-    def __truediv__(self, other: int | float | Distance) -> Distance:
+    def __truediv__(self, other: int | float) -> Distance:
         if isinstance(other, (int, float)):
             resul = round(self.km / other , 2)
             return Distance(resul)
